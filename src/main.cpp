@@ -1,3 +1,4 @@
+#include "../lib/Clientes.h"
 #include "mainwindow.h"
 #include <QApplication>
 
