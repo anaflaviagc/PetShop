@@ -1,0 +1,69 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include"cadastro.h"
+#include <QMessageBox>
+#include<iostream>
+#include <cstdio>
+#include <conio.h>
+#include <clocale>
+#include <string>
+#include"../lib/Clientes.h"
+#include <ctime>
+#define  STRING std::string
+class Endereco {
+    char cep[20];
+    char rua[100];
+    int numero;
+public:
+    STRING toString(){
+        return STRING("RUA: ")+rua+STRING("\nnumero :")+std::to_string(this->numero)+STRING("\ncep: ")+cep;
+    }
+};
+
+
+class Cliente {
+    STRING nome;
+    STRING nome_pet;
+    STRING pacote;
+    int dia;
+    int mes;
+    int ano;
+    char dia_semana[8];
+    Endereco end;
+public:
+    Cliente() {}
+    Cliente(const STRING nome, const STRING nomePet, const STRING pacote, int dia, int mes, int ano,
+            const char *diaSemana, const Endereco end) {
+        this->nome = nome;
+        this->nome_pet = nomePet;
+        this->pacote = pacote;
+        this->dia = dia;
+        this->ano = ano;
+        snprintf(this->dia_semana,8,"%s",diaSemana);
+    }
+  STRING  toString(){
+      return STRING("Nome do cliente: ")+this->nome+STRING("\nNome do Pet: ")+this->nome_pet+
+        STRING("\nPacote: ")+this->pacote+STRING("\n")+this->end.toString();
+    }
+};
+
+
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::on_cadastrarButton_clicked()
+{
+    Cadastro form2;
+    form2.exec();
+
+}
