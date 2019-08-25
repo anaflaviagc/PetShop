@@ -1,3 +1,3 @@
 # PetShop
 
-> confia
+> um pequeno projeto
